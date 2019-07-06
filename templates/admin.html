@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../static/lib/jquery/jquery-1.8.3.min.js"></script>
+    <script src="../static/lib/vue/vue-2.4.0.js"></script>
+
+</head>
+<body>
+
+    <div id="admin">
+        <table border="1">
+            <tr>
+                <td>ID</td>
+                <td>姓名</td>
+                <td>邮箱</td>
+                <td>微信</td>
+                <td>主页</td>
+                <td>内容</td>
+                <td>操作</td>
+            </tr>
+            <tr v-for="item in message" :key="item.id">
+                <td>{{item.id}}</td>
+                <td>{{item.name}}</td>
+                <td>{{item.email}}</td>
+                <td>{{item.wechat}}</td>
+                <td>{{item.website}}</td>
+                <td>{{item.content}}</td>
+                <td>
+                    <a href="" @click.prevent="del(item.id)">删除</a>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+</body>
+    <script>
+        let vm = new Vue({
+            el: '#admin',
+            data: {
+                message:[],
+            },
+            methods:{
+                del(id){
+                    this.message.some((item, i) => {
+                        if(item.id === id){
+                            this.message.splice(i, 1);
+                            $.ajax({
+                                url: "./admin",
+                                type: "post",
+                                dataType: "json",
+                                data: {
+                                    "id" : id
+                                }
+                            });
+                            return true;
+                        }
+                    })
+                }
+            },
+            mounted() {
+                $.ajax({
+                    url: "./message",
+                    type: "get",
+                    dataType: "json",
+                    success: (data) => {
+                        this.message = data.reverse();
+                    }
+                })
+            }
+        });
+
+    </script>
+</html>

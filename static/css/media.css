@@ -1,0 +1,142 @@
+/*css 媒体查询代码*/
+/*body{*/
+    /*font-size:16px;*/
+/*}*/
+/*最大宽度1200*/
+/*最小宽度1200*/
+@media only screen and (max-width:768px) {
+    /*手机*/
+    body{
+        font-size: 10px;
+    }
+    .countdownHolder{
+        font: 25px/1.5 'Open Sans Condensed',sans-serif;
+    }
+    #home .home-box .picture {
+        width: 100px;
+        height: 100px;
+    }
+    .bottom .navbar {
+        margin:0 0;
+        /*媒体查询*/
+    }
+    #message .messageborad {
+        width: 90%;
+        /*height: 600px;*/
+    }
+    #message .wapper{
+        height: 400px;
+    }
+    #message .leaving {
+        width: 130px;
+        height: 50px;
+        line-height: 50px;
+    }
+    #message .formborad {
+        width: 300px;
+        transform:translate(-50%,-75%);
+        height: 425px;
+    }
+}
+
+@media only screen and (min-width:768px) {
+    /*手机*/
+    body{
+        font-size: 12px;
+    }
+    .countdownHolder{
+        font: 30px/1.5 'Open Sans Condensed',sans-serif;
+    }
+    #home .home-box .picture {
+        width: 125px;
+        height: 125px;
+    }
+    .bottom .navbar {
+        margin:0 5%;
+        /*媒体查询*/
+    }
+    #message .messageborad {
+        width: 70%;
+        /*height: 600px;*/
+    }
+    #message .wapper{
+        height: 400px;
+    }
+    #message .formborad {
+        width: 800px;
+        transform:translate(-50%,-65%);
+        height: 460px;
+    }
+    #message .leaving{
+        width: 160px;
+        height: 60px;
+        line-height: 60px;
+    }
+}
+@media only screen and (min-width:992px) {
+    /*平板*/
+    body{
+        font-size:14px;
+    }
+    .countdownHolder{
+        font: 35px/1.5 'Open Sans Condensed',sans-serif;
+    }
+    #home .home-box .picture {
+        width: 150px;
+        height: 150px;
+    }
+    .bottom .navbar {
+        margin:0 10%;
+        /*媒体查询*/
+    }
+    #message .messageborad {
+        width: 70%;
+        /*height: 600px;*/
+    }
+    #message .wapper{
+        height: 600px;
+    }
+    #message .formborad {
+        width: 800px;
+        transform:translate(-50%,-70%);
+    }
+    #message .leaving{
+        width: 180px;
+        height: 70px;
+        line-height: 70px;
+    }
+}
+@media only screen and (min-width:1200px) {
+    /*中等显示器*/
+    body{
+        font-size:16px;
+    }
+    .countdownHolder{
+        font: 40px/1.5 'Open Sans Condensed',sans-serif;
+    }
+    #home .home-box .picture {
+        width: 200px;
+        height: 200px;
+    }
+    .bottom .navbar {
+        margin:0 20%;
+        /*媒体查询*/
+    }
+    #message .messageborad {
+        width: 50%;
+        /*height: 600px;*/
+    }
+    #message .wapper{
+        height: 600px;
+    }
+    #message .formborad {
+        width: 800px;
+        transform:translate(-50%,-70%);
+    }
+    #message .leaving{
+        width: 200px;
+        height: 80px;
+        line-height: 80px;
+    }
+
+}

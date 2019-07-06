@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="Generator" content="EditPlus®">
+    <meta name="Author" content="">
+    <meta name="Keywords" content="">
+    <meta name="Description" content="">
+    <title>幽灵屋</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+            list-style:none;
+            text-decoration:none;
+        }
+
+        html,body{
+            width:100%;
+            height:1000px;
+        }
+
+        .wrapper{
+            width:100%;
+            height:100%;
+            background: linear-gradient(90deg, #496eaa, #944fa8, #a8804f, #496eaa);
+            background-size:1400% 300%;
+            position:absolute;
+            top:0;
+            left:0;
+            animation:mymove 20s ease infinite;
+            -webkit-animation: mymove 20s ease infinite;
+            -moz-animation: mymove 20s ease infinite;
+        }
+
+        @keyframes mymove {
+            0% {
+                background-position: 0 0; }
+            50% {
+                background-position: 50% 100%; }
+            100% {
+                background-position: 100% 0; }
+        }
+
+
+        .wrapper .top-nav-wrap{
+            width:100%;
+            height:80px;
+        }
+        .wrapper .top-nav-wrap .top-nav{
+            width:800px;
+            height:80px;
+            margin:0 auto;
+        }
+
+        .wrapper .top-nav-wrap .top-nav .top-nav-l{
+            float:left;
+        }
+        .wrapper .top-nav-wrap .top-nav .top-nav-r{
+            float:right;
+        }
+        .wrapper .top-nav-wrap .top-nav ul{
+            margin-top:20px;
+        }
+        .wrapper .top-nav-wrap .top-nav li{
+            float:left;
+            margin-right:7px;
+            letter-spacing:1px;
+            margin-top:15px;
+        }
+        .wrapper .top-nav-wrap .top-nav li a{
+            padding:0 10px;
+            color:#ffffff;
+            opacity:0.8;
+            font-size:17px;
+            font-weight: 600;
+        }
+        .wrapper .top-nav-wrap .top-nav .top-nav-l a{
+            font-size:20px;
+        }
+        /*临时的*/
+        .content {
+            width:200px;
+            height:200px;
+            background-color:rgba(50,20,150,0.5);
+            border-radius:50%;
+            color:#ffffff;
+            font-size:20px;
+            font-weight:700;
+            text-align: center;
+            line-height:200px;
+            margin:0 auto;
+            letter-spacing:10px;
+            margin-top: 400px;
+        }
+    </style>
+</head>
+<body>
+
+<!--1.主页-->
+<!--2.介绍-->
+<!--3.作品-->
+<!--4.留言-->
+
+<div class="wrapper">
+    <div class="top-nav-wrap">
+        <div class="top-nav">
+            <ul class="top-nav-l">
+                <li class="top-nav-menu gc">
+                    <a href="#">GhostCat</a>
+                </li>
+                <li class="top-nav-menu ymyx">
+                    <a href="#">Ymyx</a>
+                </li>
+            </ul>
+            <ul class="top-nav-r">
+                <li class="top-nav-menu introduce">
+                    <a href="#">个人介绍</a>
+                </li>
+                <li class="top-nav-menu demo">
+                    <a href="#">练习作品</a>
+                </li>
+                <li class="top-nav-menu message">
+                    <a href="#">来踩一脚</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="screen-box-wrap">
+        <div class="content">正在开发</div>
+    </div>
+</div>
+
+
+<!--制作大纲-->
+<!--idea：底部有个猫咪，你往下滑鼠标，猫咪就往右，-->
+<!--往上滑，猫咪就左，还有加速的趋势-->
+<!--不滑，猫咪就坐在-->
+
+<!--点击猫咪，回顶部-->
+</body>
+</html>

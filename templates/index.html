@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>GhostCat</title>
+    <meta name=”viewport” content="width=device-width,initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <link href="../static/image/ghostcat.ico">
+
+    <!--<style>-->
+        <!--#canvas{-->
+            <!--background-color: #e4fffc;-->
+            <!--/*position:fixed;*/-->
+            <!--margin: 0 auto;-->
+	        <!--display: block;-->
+            <!--z-index: 10000;-->
+        <!--}-->
+        <!--/*#ghostcat .two{*/-->
+            <!--/*display:none;*/-->
+        <!--/*}*/-->
+    <!--</style>-->
+
+    <!--<script type="text/javascript" src="../static/lib/cat_loading/js/catload.js" ></script>-->
+
+
+    <script src="../static/lib/jquery/jquery-1.8.3.min.js"></script>
+    <link rel="stylesheet" href="../static/lib/fullPage/jquery.fullPage.css">
+    <script src="../static/lib/fullPage/jquery.fullPage.min.js"></script>
+    <script src="../static/lib/vue/vue-2.4.0.js"></script>
+    <link rel="stylesheet" href="../static/lib/daojishi/assets/css/styles.css">
+    <link rel="stylesheet" href="../static/lib/daojishi/assets/countdown/jquery.countdown.css">
+
+    <link rel="stylesheet" href="../static/css/style.css">
+    <link rel="stylesheet" href="../static/css/media.css">
+
+
+    <link rel="stylesheet" href="../static/lib/font-awesome-4.7.0/css/font-awesome.min.css">
+    <!--<link rel="stylesheet" href="../static/lib/fontawesome-free-5.5.0-web/css/regular.min.css">-->
+
+    <!--<script src="../static/lib/fontawesome-free-5.5.0-web/js/fontawesome.min.js"></script>-->
+
+</head>
+
+<body>
+
+
+<div id="ghostcat">
+    <!--<div class="section">-->
+            <!--<canvas id="canvas">该浏览器不支持canvas,更换浏览器试试</canvas>-->
+    <!--</div>-->
+    <div class="section">
+        <div class="bottom">
+            <div class="navbar">
+                <ul class="nav">
+                    <li><a href="javascript:" data-attr="game">小游戏</a></li>
+                    <li><a href="javascript:" data-attr="tool">小工具</a></li>
+                    <li class="logo liactive"><a href="javascript:" data-attr="home">GhostCat</a></li>
+                    <li><a href="javascript:" data-attr="story">小故事</a></li>
+                    <li><a href="javascript:" data-attr="message">留言板</a></li>
+                </ul>
+            </div>
+            <div class="footer">
+                <p>&copy; 2018 GhostCat, All rights reserved.</p>
+            </div>
+        </div>
+        <div class="slide" data-value="1" id="game">
+            <h3>小游戏</h3>
+            <p>Minigame</p>
+        </div>
+        <div class="slide" data-value="2" id="tool">
+            <h3>小工具</h3>
+            <p>Web effects library</p>
+        </div>
+        <div class="slide active" data-value="3" id="home">
+            <div class="home-box">
+                <div class="picture">
+                    <img src="../static/image/touxiang.jpg" alt="">
+                </div>
+                <div class="content">
+                    <h4>距离英语考试还剩</h4>
+                    <p>The English exam is still to come</p>
+                </div>
+                <div class="count">
+                    <div id="countdown"></div>
+
+                    <p id="note"></p>
+                    <div style="text-align:center;clear:both; font-size:12px; margin-top:100px;">
+                </div>
+            </div>
+        </div>
+        </div>
+        <div class="slide" data-value="4" id="story">
+            <h3>小故事</h3>
+            <span>Storiette</span>
+        </div>
+        <div class="slide" data-value="5" id="message">
+            <div class="wapper">
+                <div class="messageborad">
+                    <div class="borad" v-for="item in message">
+                        <div class="head">
+                            <!--<div></div>-->
+                            <!--头-->
+                            <!--<i class="fas fa-user"></i>-->
+                            <!--<img src="" alt="">-->
+                        </div>
+                        <div class="content" >
+                            <p>{{item.content}}</p>
+                            <p>
+                                <span>{{item.name}}</span>
+                                <span>{{item.time}}</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="leaving" @click="leaving">
+                我要留言
+            </div>
+            <div class="formborad">
+                <div class="header">
+                    <h1>留言板</h1>
+                    <p>可以留言，但是功能还未完善。手下留情~</p>
+                    <!--<p>请勿发表色情、政治敏感等话题</p>-->
+                </div>
+                <span @click="close">X</span>
+                <div class="body">
+                    <form method="post" id="tj">
+                        <input type="text" class="name" name="name" placeholder="您的昵称*">
+                        <input type="email" class="email" name="email" placeholder="您的邮箱*">
+                        <input type="text" class="wechat" name="wechat" placeholder="您的微信(选填)">
+                        <input type="text" class="website" name="website" placeholder="您的主页(选填)">
+                        <textarea class="content" name="content" placeholder="请输入您要留言的内容，或者是对本站的意见。" cols="30" rows="10"></textarea>
+                        <span class="leaving" @click="submit">提交留言</span>
+                    </form>
+                </div>
+
+
+
+                <!--留言版不使用form，使用ajax，不刷新页面添加。-->
+                <!--具体功能：-->
+                    <!--点击我要留言，弹出模态框-->
+                    <!--留言区域，昵称，邮箱，主页等-->
+                    <!--提交留言，前端 ： 模态框关闭，页面缓缓出现留言内容-->
+                            <!--后端： 往后端传送数据，写入数据库（文件）-->
+                    <!--留言信息使用ajax请求获取-->
+            </div>
+        </div>
+    </div>
+
+</div>
+</body>
+
+
+    <script src="../static/lib/daojishi/assets/countdown/jquery.countdown.js"></script>
+    <script src="../static/lib/daojishi/assets/js/script.js"></script>
+
+    <script>
+        // 把网页的某一个部分提取过来
+        // $("选择器").load(url + "区域")
+
+        let app = new Vue({
+            el: '#ghostcat',
+            data: {
+                message:[],
+            },
+            methods:{
+                leaving(){
+                    let m = document.querySelector("#message .formborad");
+                    m.style.display = "inline-block";
+                },
+                close(){
+                    let m = document.querySelector("#message .formborad");
+                    m.style.display = "none";
+                },
+                submit(){
+                    $.ajax({
+                        url:"./message",
+                        type:"POST",
+                        dataType:"json",
+                        // data: $("#tj").serialize(),
+                        data:{
+                            name: $("#tj .name").val(),
+                            email: $("#tj .email").val(),
+                            wechat: $("#tj .wechat").val(),
+                            website: $("#tj .website").val(),
+                            content: $("#tj .content").val()
+                        },
+
+                        success:(result) => {
+                            this.message.unshift(result.data);
+                            document.getElementById("tj").reset();
+                            let m = document.querySelector("#message .formborad");
+                            m.style.display = "none";
+                        }
+                    })
+                }
+            },
+                mounted(){
+                $.ajax({
+                    url:"./message",
+                    type:"get",
+                    dataType:"json",
+                    success:(data) => {
+                        this.message = data.reverse();
+                    }
+                })
+            },
+
+        });
+
+        $(function(){
+            $('#ghostcat').fullpage({
+                afterSlideLoad:function (a,b,c,d) {
+                    if(flag){
+                        mouseEvent($(".navbar .nav li:eq(" + c + ")"));
+                    }
+                    flag = true;
+                }
+            });
+            $(".fp-controlArrow").hide();
+
+
+            // $("#ghostcat .two").show();
+            // document.querySelector("#canvas").style.display = "none";
+        });
+
+    </script>
+    <script src="../static/js/main.js"></script>
+</html>
